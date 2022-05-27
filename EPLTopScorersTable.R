@@ -38,7 +38,7 @@ url <- "https://en.wikipedia.org/wiki/2021%E2%80%9322_Premier_League"
 
 session = bow(user_agent = "EPL_Top_Scorers", url)
 
-EPLTOPScorersTable <- scrape(session) %>% html_nodes("table.wikitable:nth-child(65)") %>% html_table()
+EPLTOPScorersTable <- scrape(session) %>% html_nodes("table.wikitable:nth-child(64)") %>% html_table()
 
 EPLTOPScorersTable <- as.data.frame(EPLTOPScorersTable)
 
@@ -63,8 +63,14 @@ EPLTOPScorersggplot <- EPLTOPScorersTable %>%
                         TottenhamFC Official Website
                         LiverpoolFC Official Website
                         @R_by_Ryo
-                      ")) + theme(plot.title=element_text(hjust=0.1), axis.title.y=element_text(face="italic"),
-                                               plot.subtitle=element_text(hjust=0.1), text = element_text(family = "Lato")) + xlab("")
+                      ")) + theme(plot.title=element_text(hjust=0.1), 
+                                               plot.subtitle=element_text(hjust=0.1), 
+                                              text = element_text(family = "Lato"),
+                                              
+                                              axis.title = element_text(colour = "#7F3D17"))  
+                                  + xlab("")
+                  
+                                  
 
 
 superimposed_image_y <- axis_canvas(EPLTOPScorersggplot, axis = 'y') + 
